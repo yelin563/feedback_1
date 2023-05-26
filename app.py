@@ -7,7 +7,7 @@ import numpy as np
 import tensorflow as tf
 import sentencepiece as spm
 from tensorflow.keras.preprocessing.sequence import pad_sequences
-from sample_anwer import *
+from sample_answer import *
 """
 여기서부터는 웹에 들어갈 내용
 관련된 함수 참고 : https://docs.streamlit.io/
