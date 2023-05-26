@@ -71,3 +71,14 @@ if st.button('피드백 받기'):
         st.info('(다항식) 곱하기 (단항식)을 잘 생각해보자!', icon="ℹ️")
 else : 
     st.button('피드백 받기 버튼을 눌러보세요!')
+   
+
+if st.button('풀이보기'):
+    
+    model1 = tf.keras.models.load_model('lstm_class.h5')
+    sp = spm.SentencePieceProcessor(model_file='2-7_class_v.model')
+    sequences = [sp.encode_as_ids(response)]
+    X = pad_sequences(sequences, maxlen=128)
+    pred = model1.predict(X .reshape(1,128))
+    k=np.argmax(pred)
+    print(f'모범답안{k}')
