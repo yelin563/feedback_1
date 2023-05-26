@@ -75,8 +75,8 @@ else :
 
 if st.button('풀이보기'):
     
-    model1 = tf.keras.models.load_model('lstm_class.h5')
-    sp = spm.SentencePieceProcessor(model_file='2-7_class_v.model')
+    model1 = tf.keras.models.load_model('./save/lstm_class.h5')
+    sp = spm.SentencePieceProcessor(model_file='./save/2-7_class_v.model')
     sequences = [sp.encode_as_ids(response)]
     X = pad_sequences(sequences, maxlen=128)
     pred = model1.predict(X .reshape(1,128))
