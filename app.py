@@ -4,7 +4,9 @@ from transformers import BertTokenizer
 import streamlit as st
 import torch
 import numpy as np
-
+import tensorflow as tf
+import sentencepiece as spm
+from tensorflow.keras.preprocessing.sequence import pad_sequences
 """
 여기서부터는 웹에 들어갈 내용
 관련된 함수 참고 : https://docs.streamlit.io/
