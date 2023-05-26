@@ -83,4 +83,4 @@ if st.button('풀이보기'):
     X = pad_sequences(sequences, maxlen=128)
     pred = model1.predict(X .reshape(1,128))
     k=np.argmax(pred)
-    print(f'모범답안{k}')
+    st.success(f'모범답안{k}')
