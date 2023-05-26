@@ -7,6 +7,7 @@ import numpy as np
 import tensorflow as tf
 import sentencepiece as spm
 from tensorflow.keras.preprocessing.sequence import pad_sequences
+from sample_anwer import *
 """
 여기서부터는 웹에 들어갈 내용
 관련된 함수 참고 : https://docs.streamlit.io/
@@ -83,4 +84,5 @@ if st.button('풀이보기'):
     X = pad_sequences(sequences, maxlen=128)
     pred = model1.predict(X .reshape(1,128))
     k=np.argmax(pred)
+    anwer=lst[k]
     st.success(f'모범답안{k}')
