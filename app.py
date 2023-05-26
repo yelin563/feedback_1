@@ -85,4 +85,5 @@ if st.button('풀이보기'):
     pred = model1.predict(X .reshape(1,128))
     k=np.argmax(pred)
     answer=lst[k]
-    st.success(answer)
+    answer_la=st.latex(answer)
+    st.success(answer_la)
