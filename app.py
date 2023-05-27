@@ -105,7 +105,7 @@ if st.button('피드백 받기'):
         st.success(f'정답입니다! {g_str} 을 이해하고 있네요. 하지만 풀이과정을 좀 더 자세히 써주세요', icon="✅")
     elif corr[0].round() == 0 and len(b)>0 and len(g)>0:
         st.info(f'다시 한 번 풀어볼까요? {g_str} 을 이해하고 있네요. 하지만 계산 과정과 {b_str} 과정을 검토해봅시다.', icon="ℹ️")
-    elif corr[0].round() == 0 and len(b)>0 and len(g)=0:
+    elif corr[0].round() == 0 and len(b)>0 and len(g)==0:
         st.info(f'다시 한 번 풀어볼까요? 계산 과정과 {b_str} 과정을 검토해봅시다.', icon="ℹ️")
     elif corr[0].round() == 0 and len(b)==0 and len(g)>0:
         st.info(f'다시 한 번 풀어볼까요? {g_str} 을 이해하고 있네요. 하지만 실수한 것이 있는지 한번 검토해봅시다.', icon="ℹ️")
