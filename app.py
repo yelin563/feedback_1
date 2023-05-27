@@ -20,9 +20,8 @@ st.subheader("문항2-7")
 st.markdown("높이가 ( 2x )^{2{ 인 삼각형의 넓이가 48x^{3}y^{2} 일 때 이 삼각형의 밑변의 길이를 구하시오")
 response = st.text_input('답안 :', "답안을 작성해주세요")
 
-"""
-자신의 모델에 맞는 변수 설정해주기
-"""
+######자신의 모델에 맞는 변수 설정해주기
+
 model_name = "2-6_att_sp_100" #모델 이름 넣어주기 확장자는 넣지말기!
 #모델에 맞는 hyperparameter 설정
 vs = 100 #vocab size
@@ -36,22 +35,20 @@ output_d = 5 #자기의 모델에 맞는 output_d구하기 (지식요소 개수)
 c = cfg(vs=vs, emb=emb, hidden=hidden, nh=nh, device=device)
 
 
-"""
-model과 tokneizer 부르기
-"""
+######model과 tokneizer 부르기
+
 #model = RNNModel(output_d, c) #RNNModel 쓰는경우
 # model = LSTMModel(output_d, c) #LSTMModel 쓰는경우
 model = ATTModel(output_d, c) #ATTModel 쓰는경우
 
 model.load_state_dict(torch.load("./save/"+model_name+".pt"))
 
-#자신에게 맞는 모델로 부르기
+######자신에게 맞는 모델로 부르기
 tokenizer = AutoTokenizer.from_pretrained("./save/"+ model_name) #sp tokenizer 쓰는 경우
 # tokenizer = BertTokenizer.from_pretrained("./save/"+model_name+"-vocab.txt") #bw tokenizer 쓰는경우
 
-"""
-자동 채점해주는 코드
-"""
+######자동 채점해주는 코드
+
 enc = tokenizer(response)["input_ids"] #sp tokenizer
 # enc = tokenizer.encode(response) #bw tokenizer
 l = len(enc)
@@ -63,9 +60,9 @@ pad_ten = pad_ten.reshape(1,max_len)
 y = model(pad_ten)
 label = y.squeeze().detach().cpu().numpy().round()
 print(label)
-"""
-유사한 모범답안
-"""
+
+######유사한 모범답안
+
 model1 = tf.keras.models.load_model('./save/lstm_class.h5')
 sp1 = spm.SentencePieceProcessor(model_file='./save/2-7_class_v.model')
 sequences1 = [sp1.encode_as_ids(response)]
@@ -74,9 +71,8 @@ pred1 = model1.predict(X1 .reshape(1,128))
 k=np.argmax(pred1)
 answer=lst[k]
 
-"""
-정오답
-"""
+######정오답
+
 model2 = tf.keras.models.load_model('./save/lstm_corr.h5')
 sp2 = spm.SentencePieceProcessor(model_file='./save/2-7_cor_v.model')
 sequences2 = [sp2.encode_as_ids(response)]
@@ -84,9 +80,8 @@ X2 = pad_sequences(sequences2, maxlen=150)
 corr = model2.predict(X2 .reshape(1,150))
 
 
-"""
-인지요소
-"""
+######인지요소
+
 g=[]
 b=[]
 if k!=4:
@@ -128,11 +123,17 @@ if "button3" not in st.session_state:
 
 if st.button("힌트1 받기"):
     st.session_state["button1"] = not st.session_state["button1"]
-
+    if k==1:
+        if label[0] == 0:
+            st.info(f'등식의 성질에 의해 양변에 같은 항을 곱하거나 나눌 수 있습니다. 양변에 같은 항을 곱하거나 나누었나요?', icon="ℹ️")
+            
 if st.session_state["button1"]:
     if st.button("힌트2 받기"):
         st.session_state["button2"] = not st.session_state["button2"]
-
+        if label[0] == 0:
+            st.latex('\square = -12x^{3}y^{2} \\times 18x^{3}y^{3} \\times \\frac{1}{8x^{2}y^{3}}')
+        
+        
 if st.session_state["button1"] and st.session_state["button2"]:
     if st.button("힌트3 받기"):
         
@@ -142,11 +143,9 @@ if st.session_state["button3"]:
     st.write("**Button3!!!**")  
     
 if st.button('힌트받기'):
-    if k==1:
-        if label[0] == 0:
-            st.info(f'등식의 성질에 의해 양변에 같은 항을 곱하거나 나눌 수 있습니다. 양변에 같은 항을 곱하거나 나누었나요?', icon="ℹ️")
+    
             if st.button('힌트 더받기'):
-                st.latex('\square = -12x^{3}y^{2} \\times 18x^{3}y^{3} \\times \\frac{1}{8x^{2}y^{3}}')
+                
                 
  
     
