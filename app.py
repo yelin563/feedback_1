@@ -63,27 +63,54 @@ pad_ten = pad_ten.reshape(1,max_len)
 y = model(pad_ten)
 label = y.squeeze().detach().cpu().numpy().round()
 
+"""
+유사한 모범답안
+"""
+model1 = tf.keras.models.load_model('./save/lstm_class.h5')
+sp = spm.SentencePieceProcessor(model_file='./save/2-7_class_v.model')
+sequences = [sp.encode_as_ids(response)]
+X = pad_sequences(sequences, maxlen=128)
+pred = model1.predict(X .reshape(1,128))
+k=np.argmax(pred)
+answer=lst[k]
+
+"""
+인지요소
+"""
+g=[]
+b=[]
+if k!=4:
+    (g if label[0] == 1 else b).append('등식의 성질')    
+(g if label[1] == 1 else b).append('단항식의 곱셈')
+(g if label[2] == 1 else b).append('단항식의 나눗셈')
+(g if label[3] == 1 else b).append('거듭제곱의 곱셈')
+(g if label[4] == 1 else b).append('거듭제곱의 나눗셈')
+g_str = ' , '.join(g)
+b_str = ' , '.join(b)
+
+
 if st.button('피드백 받기'):
     """
     output차원에 맞추어 피드백 넣기
     """
     st.write(response)
-    if label[1] == 1:
-        st.success('(다항식) 곱하기 (단항식)을 잘하는구나!', icon="✅")
+    
+    if label[5] == 1 and len(response)>30:
+        st.success(f'정답입니다! {g_str} 을 이해하고 있네요 ', icon="✅")
+    elif label[5] == 1 and len(response)<=30:
+        st.success(f'정답입니다! {g_str} 을 이해하고 있네요. 하지만 풀이과정을 좀 더 자세히 써주세요', icon="✅")
     else :
-        st.info('(다항식) 곱하기 (단항식)을 잘 생각해보자!', icon="ℹ️")
+        st.info(f'다시 한 번 풀어볼까요? {g_str} 을 이해하고 있네요. 하지만 계산 과정과 {b_str} 과정을 검토해봅시다.', icon="ℹ️")
 else : 
     st.button('피드백 받기 버튼을 눌러보세요!')
    
-
+if st.button('힌트 보기'):
+    if k==1:
+        
+    
+    
 if st.button('풀이보기'):
     
-    model1 = tf.keras.models.load_model('./save/lstm_class.h5')
-    sp = spm.SentencePieceProcessor(model_file='./save/2-7_class_v.model')
-    sequences = [sp.encode_as_ids(response)]
-    X = pad_sequences(sequences, maxlen=128)
-    pred = model1.predict(X .reshape(1,128))
-    k=np.argmax(pred)
-    answer=lst[k]
+    
     answer_la=st.latex(answer)
     st.success(answer_la)
