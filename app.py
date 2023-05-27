@@ -62,7 +62,7 @@ pad_ten = torch.tensor(pad)
 pad_ten = pad_ten.reshape(1,max_len)
 y = model(pad_ten)
 label = y.squeeze().detach().cpu().numpy().round()
-
+print(label)
 """
 유사한 모범답안
 """
