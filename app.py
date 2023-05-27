@@ -69,7 +69,7 @@ sequences1 = [sp1.encode_as_ids(response)]
 X1 = pad_sequences(sequences1, maxlen=128)
 pred1 = model1.predict(X1 .reshape(1,128))
 k=np.argmax(pred1)
-answer=lst[k]
+
 
 ######정오답
 
@@ -172,5 +172,15 @@ if st.session_state["hint3"]:
     st.write("**Button3!!!**")
     
 if st.button('풀이보기'):
-    answer_la=st.latex(answer)
-    st.success(answer_la)
+    if k==1:
+        for i in range(len(lst1)):
+            st.latex(lst1[i])
+    if k==2:
+        for i in range(len(lst2)):
+            st.latex(lst2[i])
+    if k==3:
+        for i in range(len(lst3)):
+            st.latex(lst3[i])
+    if k==4:
+        for i in range(len(lst4)):
+            st.latex(lst4[i])
