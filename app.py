@@ -110,7 +110,5 @@ if st.button('힌트 보기'):
     
     
 if st.button('풀이보기'):
-    
-    
-    answer_la=st.latex(answer)
-    st.success(answer_la)
+  answer_la=st.latex(answer)
+  st.success(answer_la)
