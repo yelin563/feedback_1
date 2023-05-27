@@ -104,7 +104,7 @@ if st.button('피드백 받기'):
 else : 
     st.button('피드백 받기 버튼을 눌러보세요!')
    
-if st.button('힌트 보기'):
+
  
     
     
