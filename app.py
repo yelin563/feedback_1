@@ -124,9 +124,10 @@ if st.button("1번째 힌트 받기"):
     if k==1:
         if label[0] == 0:
             st.info('등식의 성질에 의해 양변에 같은 항을 곱하거나 나눌 수 있습니다. 양변에 같은 항을 곱하거나 나누었나요?', icon="ℹ️")
+            st.latex(lst1[1])
         if label[0] == 1:
             st.info('아래 식에서 숫자는 숫자끼리, 문자는 같은 문자끼리 계산해봅시다', icon="ℹ️")
-            st.latex(lst1[1])
+            st.latex(lst1[2])
     if k==2:
         if label[0] == 0:
             st.info('등식의 성질에 의해 양변에 같은 항을 곱하거나 나눌 수 있습니다. 양변에 같은 항을 곱하거나 나누었나요?', icon="ℹ️")
@@ -141,32 +142,32 @@ if st.session_state["hint1"]:
         if k==1:
             if label[0] == 0:
                 st.info('등식의 성질에 의해 양변에 같은 항을 곱하거나 나누면', icon="ℹ️")
-                st.latex(lst1[1])
+                st.latex(lst1[2])
             if label[0] == 1:
                 st.latex(lst1[1])
                 st.latex(lst1[2])
         if k==2:
             if label[0] == 0:
                 st.info('등식의 성질에 의해 양변에 같은 항을 곱하거나 나누면', icon="ℹ️")
-                st.latex(lst2[1])
+                st.latex(lst2[2])
             if label[0] == 1:
                 st.info('아래 식에서 숫자는 숫자끼리, 문자는 같은 문자끼리 계산해봅시다', icon="ℹ️")
-                st.latex(lst2[1])
                 st.latex(lst2[2])
+                st.latex(lst2[3])
 if st.session_state["hint1"] and st.session_state["hint2"]:
     if st.button("3번째 힌트 받기"):
         st.session_state["hint3"] = not st.session_state["hint3"]
         if k==1:
             if label[0] == 0 and label[1] == 1:
                 st.info('아래 식에서 숫자는 숫자끼리, 문자는 같은 문자끼리 계산해봅시다', icon="ℹ️")
-                st.latex(lst1[1])
+                st.latex(lst1[2])
             if label[0] == 0 and label[1] == 0:
                 st.info('아래 식처럼 숫자는 숫자끼리, 문자는 같은 문자끼리 계산해봅시다', icon="ℹ️")
-                st.latex(lst1[1])
                 st.latex(lst1[2])
+                st.latex(lst1[3])
             if label[0] == 1:
                 st.info('지수법칙에 의해 밑이 같은 항을 곱할 때에는 지수가 덧셈, 나눌 때에는 지수가 뺄셈이 됩니다.', icon="ℹ️")
-                st.latex(lst1[2])
+                st.latex(lst1[3])
                 st.latex('\square = -27 \\times x^{3+3-2}  \\times y^{2+3-3}')
 if st.session_state["hint3"]:
     st.write("**Button3!!!**")
