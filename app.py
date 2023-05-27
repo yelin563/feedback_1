@@ -115,7 +115,32 @@ if st.button('피드백 받기'):
         st.info(f'다시 한 번 풀어볼까요? {g_str} 을 이해하고 있네요. 하지만 실수한 것이 있는지 한번 검토해봅시다.', icon="ℹ️")
 else : 
     st.button('피드백 받기 버튼을 눌러보세요!')
-   
+
+
+if "button1" not in st.session_state:
+    st.session_state["button1"] = False
+
+if "button2" not in st.session_state:
+    st.session_state["button2"] = False
+
+if "button3" not in st.session_state:
+    st.session_state["button3"] = False
+
+if st.button("힌트1 받기"):
+    st.session_state["button1"] = not st.session_state["button1"]
+
+if st.session_state["button1"]:
+    if st.button("힌트2 받기"):
+        st.session_state["button2"] = not st.session_state["button2"]
+
+if st.session_state["button1"] and st.session_state["button2"]:
+    if st.button("힌트3 받기"):
+        
+        st.session_state["button3"] = not st.session_state["button3"]
+
+if st.session_state["button3"]:
+    st.write("**Button3!!!**")  
+    
 if st.button('힌트받기'):
     if k==1:
         if label[0] == 0:
