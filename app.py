@@ -120,7 +120,7 @@ if "hint2" not in st.session_state:
     st.session_state["hint2"] = False
 
 if "hint3" not in st.session_state:
-    st.session_state["bhint3"] = False
+    st.session_state["hint3"] = False
 
 if st.button("1번째 힌트 받기"):
     st.session_state["hint1"] = not st.session_state["hint1"]
