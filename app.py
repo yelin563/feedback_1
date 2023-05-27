@@ -112,13 +112,10 @@ if st.button('피드백 받기'):
     
 #####힌트받기
       
-
 if "hint1" not in st.session_state:
     st.session_state["hint1"] = False
-
 if "hint2" not in st.session_state:
     st.session_state["hint2"] = False
-
 if "hint3" not in st.session_state:
     st.session_state["hint3"] = False
 
@@ -130,18 +127,32 @@ if st.button("1번째 힌트 받기"):
         if label[0] == 1:
             st.info('아래 식에서 숫자는 숫자끼리, 문자는 같은 문자끼리 계산해봅시다', icon="ℹ️")
             st.latex('\square = -12x^{3}y^{2} \\times 18x^{3}y^{3} \\times \\frac{1}{8x^{2}y^{3}}')
+    if k==2:
+        if label[0] == 0:
+            st.info('등식의 성질에 의해 양변에 같은 항을 곱하거나 나눌 수 있습니다. 양변에 같은 항을 곱하거나 나누었나요?', icon="ℹ️")
+        if label[0] == 1:
+            st.info('아래 식에서 숫자는 숫자끼리, 문자는 같은 문자끼리 계산해봅시다', icon="ℹ️")
+            st.latex('-\\frac{12x^{3}y^{2}}{\square} = \\frac{8x^{2}y^{3}}{18x^{3}y^{3}}=\\frac{8}{18} \\times x^{2} \\times \\frac{1}{x^{3}} \\times \\frac{y^{3}}{y^{3}}')
+            
             
 if st.session_state["hint1"]:
     if st.button("2번째 힌트 받기"):
         st.session_state["hint2"] = not st.session_state["hint2"]
         if k==1:
             if label[0] == 0:
+                st.info('등식의 성질에 의해 양변에 같은 항을 곱하거나 나누면', icon="ℹ️")
                 st.latex('\square = -12x^{3}y^{2} \\times 18x^{3}y^{3} \\times \\frac{1}{8x^{2}y^{3}}')
             if label[0] == 1:
                 st.latex('\square = -12x^{3}y^{2} \\times 18x^{3}y^{3} \\times \\frac{1}{8x^{2}y^{3}}')
                 st.latex('\square = -12 \\times 18 \\times \\frac{1}{8} \\times x^{3} \\times x^{3} \\times \\frac{1}{x^{2}} \\times y^{2} \\times y^{3} \\times \\frac{1}{y^{3}}')
-           
-                
+        if k==2:
+            if label[0] == 0:
+                st.info('등식의 성질에 의해 양변에 같은 항을 곱하거나 나누면', icon="ℹ️")
+                st.latex('-\\frac{12x^{3}y^{2}}{\square} = \\frac{8x^{2}y^{3}}{18x^{3}y^{3}}=\\frac{8}{18} \\times x^{2} \\times \\frac{1}{x^{3}} \\times \\frac{y^{3}}{y^{3}}')
+            if label[0] == 1:
+                st.info('아래 식에서 숫자는 숫자끼리, 문자는 같은 문자끼리 계산해봅시다', icon="ℹ️")
+                st.latex('-\\frac{12x^{3}y^{2}}{\square} = \\frac{8x^{2}y^{3}}{18x^{3}y^{3}}=\\frac{8}{18} \\times x^{2} \\times \\frac{1}{x^{3}} \\times \\frac{y^{3}}{y^{3}}')
+                st.latex('-\\frac{12x^{3}y^{2}}{\square} =\\frac{4}{9x}')
 if st.session_state["hint1"] and st.session_state["hint2"]:
     if st.button("3번째 힌트 받기"):
         st.session_state["hint3"] = not st.session_state["hint3"]
