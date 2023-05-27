@@ -121,8 +121,8 @@ if st.button('힌트받기'):
         if label[0] == 0:
             st.info(f'등식의 성질에 의해 양변에 같은 항을 곱하거나 나눌 수 있습니다. 양변에 같은 항을 곱하거나 나누었나요?', icon="ℹ️")
             if st.button('힌트 더받기'):
-                step1=st.latex('\square = -12x^{3}y^{2} \\times 18x^{3}y^{3} \\times \\frac{1}{8x^{2}y^{3}}')
-                st.success(step1)
+                st.latex('\square = -12x^{3}y^{2} \\times 18x^{3}y^{3} \\times \\frac{1}{8x^{2}y^{3}}')
+                
  
     
     
