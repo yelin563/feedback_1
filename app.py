@@ -105,8 +105,7 @@ else :
     st.button('피드백 받기 버튼을 눌러보세요!')
    
 if st.button('힌트 보기'):
-    if k==1:
-        
+ 
     
     
 if st.button('풀이보기'):
