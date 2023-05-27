@@ -142,14 +142,9 @@ if st.session_state["button1"] and st.session_state["button2"]:
 if st.session_state["button3"]:
     st.write("**Button3!!!**")  
     
-if st.button('힌트받기'):
-    
-            if st.button('힌트 더받기'):
-                
-                
- 
+
     
     
 if st.button('풀이보기'):
-  answer_la=st.latex(answer)
-  st.success(answer_la)
+    answer_la=st.latex(answer)
+    st.success(answer_la)
