@@ -23,10 +23,10 @@ response = st.text_input('답안 :', "답안을 작성해주세요")
 """
 자신의 모델에 맞는 변수 설정해주기
 """
-model_name = "2-7_rnn_sp_170" #모델 이름 넣어주기 확장자는 넣지말기!
+model_name = "2-6_att_sp_100" #모델 이름 넣어주기 확장자는 넣지말기!
 #모델에 맞는 hyperparameter 설정
-vs = 170 #vocab size
-emb = 16 #default 값 지정 안했으면 건드리지 않아도 됨
+vs = 100 #vocab size
+emb = 256 #default 값 지정 안했으면 건드리지 않아도 됨
 hidden = 32 #default 값 지정 안했으면 건드리지 않아도 됨
 nh = 4 #default 값 지정 안했으면 건드리지 않아도 됨
 device = "cpu" #default 값 지정 안했으면 건드리지 않아도 됨
@@ -39,9 +39,9 @@ c = cfg(vs=vs, emb=emb, hidden=hidden, nh=nh, device=device)
 """
 model과 tokneizer 부르기
 """
-model = RNNModel(output_d, c) #RNNModel 쓰는경우
+#model = RNNModel(output_d, c) #RNNModel 쓰는경우
 # model = LSTMModel(output_d, c) #LSTMModel 쓰는경우
-# model = ATTModel(output_d, c) #ATTModel 쓰는경우
+model = ATTModel(output_d, c) #ATTModel 쓰는경우
 
 model.load_state_dict(torch.load("./save/"+model_name+".pt"))
 
