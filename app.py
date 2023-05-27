@@ -84,8 +84,6 @@ X2 = pad_sequences(sequences2, maxlen=150)
 corr = model2.predict(X2 .reshape(1,150))
 
 
-if st.button('테스트'):
-    st.success(f'{pred2}', icon="✅")
 """
 인지요소
 """
@@ -118,7 +116,12 @@ if st.button('피드백 받기'):
 else : 
     st.button('피드백 받기 버튼을 눌러보세요!')
    
-
+if st.button('힌트받기'):
+    if k==1:
+        if label[0] == 0:
+            st.info(f'등식의 성질에 의해 양변에 같은 항을 곱하거나 나눌 수 있습니다. 양변에 같은 항을 곱하거나 나누었나요?', icon="ℹ️")
+            if st.button('힌트 더받기'):
+                st.info(st.latex('1'))
  
     
     
