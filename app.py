@@ -101,42 +101,46 @@ if st.button('피드백 받기'):
     
     if corr[0].round() == 1 and len(response)>30:
         st.success(f'정답입니다! {g_str} 을 이해하고 있네요 ', icon="✅")
-    elif corr[0].round() == 1 and len(response)<=30:
+    elif corr[0].round() == 1 and len(response)<=30 :
         st.success(f'정답입니다! {g_str} 을 이해하고 있네요. 하지만 풀이과정을 좀 더 자세히 써주세요', icon="✅")
-    elif corr[0].round() == 0 and len(b)>0:
+    elif corr[0].round() == 0 and len(b)>0 and len(g)>0:
         st.info(f'다시 한 번 풀어볼까요? {g_str} 을 이해하고 있네요. 하지만 계산 과정과 {b_str} 과정을 검토해봅시다.', icon="ℹ️")
-    elif corr[0].round() == 0 and len(b)==0:
+    elif corr[0].round() == 0 and len(b)>0 and len(g)=0:
+        st.info(f'다시 한 번 풀어볼까요? 계산 과정과 {b_str} 과정을 검토해봅시다.', icon="ℹ️")
+    elif corr[0].round() == 0 and len(b)==0 and len(g)>0:
         st.info(f'다시 한 번 풀어볼까요? {g_str} 을 이해하고 있네요. 하지만 실수한 것이 있는지 한번 검토해봅시다.', icon="ℹ️")
+    
+#####힌트받기
+      
 
+if "hint1" not in st.session_state:
+    st.session_state["hint1"] = False
 
+if "hint2" not in st.session_state:
+    st.session_state["hint2"] = False
 
-if "hint" not in st.session_state:
-    st.session_state["hint"] = 0
+if "hint3" not in st.session_state:
+    st.session_state["bhint3"] = False
 
-
-if st.button("힌트 받기", key='hint'):
-    st.session_state["hint"] = st.session_state["hint"] + 1 
+if st.button("1번째 힌트 받기"):
+    st.session_state["hint1"] = not st.session_state["hint1"]
     if k==1:
         if label[0] == 0:
             st.info(f'등식의 성질에 의해 양변에 같은 항을 곱하거나 나눌 수 있습니다. 양변에 같은 항을 곱하거나 나누었나요?', icon="ℹ️")
-            
-if st.session_state["hint"]==1:
-    if st.button("힌트 받기", key='hint'):
-        st.session_state["hint"] = st.session_state["hint"]+1
-        if label[0] == 0:
-            st.latex('\square = -12x^{3}y^{2} \\times 18x^{3}y^{3} \\times \\frac{1}{8x^{2}y^{3}}')
-        
-        
-if st.session_state["hint"]==2:
-    if st.button("힌트 받기", key='hint'):
-        
-        st.session_state["hint"] = st.session_state["hint"]+1
 
-if st.session_state["hint"]==3:
-    st.write("**Button3!!!**")  
-    
+if st.session_state["hint1"]:
+    if st.button("2번째 힌트 받기"):
+        st.session_state["hint2"] = not st.session_state["hint2"]
+        if k==1:
+            if label[0] == 0:
+                st.latex('\square = -12x^{3}y^{2} \\times 18x^{3}y^{3} \\times \\frac{1}{8x^{2}y^{3}}')
 
-    
+if st.session_state["hint1"] and st.session_state["hint2"]:
+    if st.button("3번째 힌트 받기"):
+        st.session_state["hint3"] = not st.session_state["hint3"]
+
+if st.session_state["hint3"]:
+    st.write("**Button3!!!**")
     
 if st.button('풀이보기'):
     answer_la=st.latex(answer)
