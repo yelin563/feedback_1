@@ -67,12 +67,23 @@ print(label)
 유사한 모범답안
 """
 model1 = tf.keras.models.load_model('./save/lstm_class.h5')
-sp = spm.SentencePieceProcessor(model_file='./save/2-7_class_v.model')
-sequences = [sp.encode_as_ids(response)]
-X = pad_sequences(sequences, maxlen=128)
-pred = model1.predict(X .reshape(1,128))
-k=np.argmax(pred)
+sp1 = spm.SentencePieceProcessor(model_file='./save/2-7_class_v.model')
+sequences1 = [sp1.encode_as_ids(response)]
+X1 = pad_sequences(sequences1, maxlen=128)
+pred1 = model1.predict(X1 .reshape(1,128))
+k=np.argmax(pred1)
 answer=lst[k]
+
+"""
+정오답
+"""
+model2 = tf.keras.models.load_model('./save/lstm_corr.h5')
+sp2 = spm.SentencePieceProcessor(model_file='./save/2-7_cor_v.model')
+sequences2 = [sp2.encode_as_ids(response)]
+X2 = pad_sequences(sequences2, maxlen=150)
+pred2 = model2.predict(X2 .reshape(1,150))
+c=round(pred2)
+
 
 """
 인지요소
@@ -95,9 +106,9 @@ if st.button('피드백 받기'):
     """
     st.write(response)
     
-    if label[5] == 1 and len(response)>30:
+    if c == 1 and len(response)>30:
         st.success(f'정답입니다! {g_str} 을 이해하고 있네요 ', icon="✅")
-    elif label[5] == 1 and len(response)<=30:
+    elif c == 1 and len(response)<=30:
         st.success(f'정답입니다! {g_str} 을 이해하고 있네요. 하지만 풀이과정을 좀 더 자세히 써주세요', icon="✅")
     else :
         st.info(f'다시 한 번 풀어볼까요? {g_str} 을 이해하고 있네요. 하지만 계산 과정과 {b_str} 과정을 검토해봅시다.', icon="ℹ️")
