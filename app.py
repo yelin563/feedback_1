@@ -126,18 +126,35 @@ if st.button("1번째 힌트 받기"):
     st.session_state["hint1"] = not st.session_state["hint1"]
     if k==1:
         if label[0] == 0:
-            st.info(f'등식의 성질에 의해 양변에 같은 항을 곱하거나 나눌 수 있습니다. 양변에 같은 항을 곱하거나 나누었나요?', icon="ℹ️")
-
+            st.info('등식의 성질에 의해 양변에 같은 항을 곱하거나 나눌 수 있습니다. 양변에 같은 항을 곱하거나 나누었나요?', icon="ℹ️")
+        if label[0] == 1:
+            st.info('아래 식에서 숫자는 숫자끼리, 문자는 같은 문자끼리 계산해봅시다', icon="ℹ️")
+            st.latex('\square = -12x^{3}y^{2} \\times 18x^{3}y^{3} \\times \\frac{1}{8x^{2}y^{3}}')
+            
 if st.session_state["hint1"]:
     if st.button("2번째 힌트 받기"):
         st.session_state["hint2"] = not st.session_state["hint2"]
         if k==1:
             if label[0] == 0:
                 st.latex('\square = -12x^{3}y^{2} \\times 18x^{3}y^{3} \\times \\frac{1}{8x^{2}y^{3}}')
-
+            if label[0] == 1:
+                st.latex('\square = -12 \\times 18 \\times \\frac{1}{8} \\times x^{3} \\times x^{3} \\times \\frac{1}{x^{2}} \\times y^{2} \\times y^{3} \\times \\frac{1}{y^{3}}')
+           
+                
 if st.session_state["hint1"] and st.session_state["hint2"]:
     if st.button("3번째 힌트 받기"):
         st.session_state["hint3"] = not st.session_state["hint3"]
+        if k==1:
+            if label[0] == 0 and label[1] == 1:
+                st.info('아래 식에서 숫자는 숫자끼리, 문자는 같은 문자끼리 계산해봅시다', icon="ℹ️")
+                st.latex('\square = -12x^{3}y^{2} \\times 18x^{3}y^{3} \\times \\frac{1}{8x^{2}y^{3}}')
+            if label[0] == 0 and label[1] == 0:
+                st.info('아래 식에서 숫자는 숫자끼리, 문자는 같은 문자끼리 계산해봅시다', icon="ℹ️")
+                st.latex('\square = -12x^{3}y^{2} \\times 18x^{3}y^{3} \\times \\frac{1}{8x^{2}y^{3}}')
+                st.latex('\square = -12 \\times 18 \\times \\frac{1}{8} \\times x^{3} \\times x^{3} \\times \\frac{1}{x^{2}} \\times y^{2} \\times y^{3} \\times \\frac{1}{y^{3}}')
+            if label[0] == 1:
+                st.info('지수법칙에 의해 밑이 같은 항을 곱할 때에는 지수가 덧셈, 나눌 때에는 지수가 뺄셈이 됩니다. 아래의 식을 간단히 ', icon="ℹ️")
+                st.latex('\square = -12 \\times 18 \\times \\frac{1}{8} \\times x^{3} \\times x^{3} \\times \\frac{1}{x^{2}} \\times y^{2} \\times y^{3} \\times \\frac{1}{y^{3}}')
 
 if st.session_state["hint3"]:
     st.write("**Button3!!!**")
