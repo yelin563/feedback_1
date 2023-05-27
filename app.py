@@ -82,7 +82,7 @@ sp2 = spm.SentencePieceProcessor(model_file='./save/2-7_cor_v.model')
 sequences2 = [sp2.encode_as_ids(response)]
 X2 = pad_sequences(sequences2, maxlen=150)
 pred2 = model2.predict(X2 .reshape(1,150))
-c=round(pred2)
+print(pred2)
 
 
 """
