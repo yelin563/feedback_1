@@ -114,21 +114,21 @@ if "hint" not in st.session_state:
     st.session_state["hint"] = 0
 
 
-if st.button("힌트 받기"):
+if st.button("힌트 받기", key='hint'):
     st.session_state["hint"] = st.session_state["hint"] + 1 
     if k==1:
         if label[0] == 0:
             st.info(f'등식의 성질에 의해 양변에 같은 항을 곱하거나 나눌 수 있습니다. 양변에 같은 항을 곱하거나 나누었나요?', icon="ℹ️")
             
 if st.session_state["hint"]==1:
-    if st.button("힌트 받기"):
+    if st.button("힌트 받기", key='hint'):
         st.session_state["hint"] = st.session_state["hint"]+1
         if label[0] == 0:
             st.latex('\square = -12x^{3}y^{2} \\times 18x^{3}y^{3} \\times \\frac{1}{8x^{2}y^{3}}')
         
         
 if st.session_state["hint"]==2:
-    if st.button("힌트 받기"):
+    if st.button("힌트 받기", key='hint'):
         
         st.session_state["hint"] = st.session_state["hint"]+1
 
