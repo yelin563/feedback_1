@@ -17,7 +17,7 @@ st.title("자동 채점 모델 기반 자동 피드백")
 st.write("**팀원** : 수학교육과 김명식, 김재훈, 김지영, 신인섭, 윤예린, 정유진")
 
 st.subheader("문항2-6")
-st.markdown("**:blue[$( - 12x^{3}y^{2} ) \div \square \times 18x^{3}y^{3} = 8x^{2}y^{3}$]**일 때 $\square$ 안에 알맞은 식을 구하시오. ")
+st.markdown(":blue[$( - 12x^{3}y^{2} ) \div \\square \\times 18x^{3}y^{3} = 8x^{2}y^{3}$]일 때 $\square$ 안에 알맞은 식을 구하시오. ")
 response = st.text_input('답안 :', "답안을 작성해주세요")
 
 ######자신의 모델에 맞는 변수 설정해주기
