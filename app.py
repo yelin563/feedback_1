@@ -16,8 +16,8 @@ from sample_answer import *
 st.title("자동 채점 모델 기반 자동 피드백")
 st.write("**팀원** : 수학교육과 김명식, 김재훈, 김지영, 신인섭, 윤예린, 정유진")
 
-st.subheader("문항2-7")
-st.markdown("높이가 ( 2x )^{2{ 인 삼각형의 넓이가 48x^{3}y^{2} 일 때 이 삼각형의 밑변의 길이를 구하시오")
+st.subheader("문항2-6")
+st.markdown("( - 12x^{3}y^{2} ) \div \square \times 18x^{3}y^{3} = 8x^{2}y^{3}일 때 \square 안에 알맞은 식을 구하시오. ")
 response = st.text_input('답안 :', "답안을 작성해주세요")
 
 ######자신의 모델에 맞는 변수 설정해주기
@@ -121,7 +121,7 @@ if "hint3" not in st.session_state:
 
 if st.button("힌트 받기"):
     st.session_state["hint1"] = not st.session_state["hint1"]
-   
+    
     if label[0] == 0 and k!=4:
         st.info('등식의 성질에 의해 양변에 같은 항을 곱하거나 나눌 수 있습니다. 예를 들어', icon="ℹ️")
         st.latex('\square \\times 2x = 4x')
@@ -139,9 +139,10 @@ if st.button("힌트 받기"):
         st.latex('x^{2} \\times \\frac{1}{x^{4}} = \\frac{1}{x^{4-2}}=\\frac{1}{x^{2}}')  
     if label[2] == 0:
         st.info('단항식의 나눗셈은 역수를 이용하여 곱셈으로 바꿔 계산합니다. 예를 들어', icon="ℹ️")
-        st.latex('6x^{2}y^{3} \\div 3xy = 6x^{2}y^{3} \\times \\frac{1}{3xy}}')
+        st.latex('6x^{2}y^{3} \\div 3xy = 6x^{2}y^{3} \\times \\frac{1}{3xy}')
         st.latex(' = 6 \\times \\frac{1}{3} \\times x^{2} \\times \\frac{1}{x} \\times y^{3}\\times \\frac{1}{y^{2}} = 2xy^{2}') 
-    
+    if label[0]==1 and label[1]==1 and label[2]==1 and label[3]==1 and label[4]==1:
+        st.info('식의 계산을 잘 이해하고 있어 받을 힌트가 없네요. 실수한 것이 있는지 한번 검토해봅시다. ', icon="ℹ️")
             
             
 if st.session_state["hint1"]:
@@ -157,7 +158,7 @@ if st.session_state["hint1"]:
                 st.latex(lst1[2])
                 st.latex(lst1[3])
             if label[3] == 0 or label[4] == 0:
-                st.info('밑이 같은 거듭제곱의 곱셈은 지수의 합, 나눗셈은 지수의 차를이용합니다', icon="ℹ️")
+                st.info('밑이 같은 거듭제곱의 곱셈은 지수의 합, 나눗셈은 지수의 차를 이용합니다', icon="ℹ️")
                 st.latex(lst1[3])
                 st.latex(lst1[4])
         if k==2:
@@ -165,7 +166,7 @@ if st.session_state["hint1"]:
                 st.info('단항식의 나눗셈은 계수는 계수끼리, 문자는 문자끼리 계산합니다', icon="ℹ️")
                 st.latex(lst2[1])
             if label[4] == 0:
-                st.info('밑이 같은 거듭제곱의 나눗셈은 지수의 차를이용합니다', icon="ℹ️")
+                st.info('밑이 같은 거듭제곱의 나눗셈은 지수의 차를 이용합니다', icon="ℹ️")
                 st.latex('\\frac{8}{18} \\times x^{2} \\times \\frac{1}{x^{3}} \\times \\frac{y^{3}}{y^{3}}=\\frac{4}{9x}')
             if label[0] == 0:
                 st.info('등식의 성질에 의해 양변에 같은 항을 곱하거나 나누면', icon="ℹ️")
@@ -176,7 +177,7 @@ if st.session_state["hint1"]:
                 st.latex(' \square = (- 12x^{3}y^{2}) \div \\frac{4}{9x} = (- 12x^{3}y^{2}) \\times \\frac{9x}{4}' )
                 st.latex(' \square = -12 \\times \\frac{9}{4} \\times x^{3} \\times x \\times y^{2}')
             if label[3] == 0:
-                st.info('밑이 같은 거듭제곱의 곱셈은 지수의 합를이용합니다', icon="ℹ️")
+                st.info('밑이 같은 거듭제곱의 곱셈은 지수의 합를 이용합니다', icon="ℹ️")
                 st.latex(' \square = -12 \\times \\frac{9}{4} \\times x^{3} \\times x \\times y^{2}')            
                 st.latex(' \square = - 27x^{4}y^{2} ') 
         if k==3:
@@ -185,7 +186,7 @@ if st.session_state["hint1"]:
                 st.latex(lst3[1])
                 st.latex(lst3[2])
             if label[3] == 0:
-                st.info('밑이 같은 거듭제곱의 곱셈은 지수의 합를이용합니다', icon="ℹ️")
+                st.info('밑이 같은 거듭제곱의 곱셈은 지수의 합를 이용합니다', icon="ℹ️")
                 st.latex(lst3[2])
                 st.latex(lst3[3]) 
             if label[0] == 0:
@@ -197,7 +198,7 @@ if st.session_state["hint1"]:
                 st.latex(lst3[4])
                 st.latex(' \square =  -216 \div  8 \\times x^{6} \div x^{2} \\times y^{5} \div y^{3}')
             if label[4] == 0:
-                st.info('밑이 같은 거듭제곱의 나눗셈은 지수의 차를이용합니다', icon="ℹ️")
+                st.info('밑이 같은 거듭제곱의 나눗셈은 지수의 차를 이용합니다', icon="ℹ️")
                 st.latex(lst3[6])
         if k==4:
             st.latex(lst4[0])
@@ -207,7 +208,7 @@ if st.session_state["hint1"]:
                 st.latex('x^{3} \\times x^{3} \div x^{a} = x^{2}' )
                 st.latex('y^{2} \\times y^{3} \div y^{b} = y^{3}')
             if label[3] == 0 or label[4] == 0:
-                st.info('밑이 같은 거듭제곱의 곱셈은 지수의 합, 나눗셈은 지수의 차를이용합니다', icon="ℹ️")
+                st.info('밑이 같은 거듭제곱의 곱셈은 지수의 합, 나눗셈은 지수의 차를 이용합니다', icon="ℹ️")
                 st.latex(lst3[2])
                 st.latex(lst3[3]) 
             
@@ -216,7 +217,7 @@ if st.session_state["hint1"]:
                 st.latex(lst3[4])
                 st.latex(' \square =  -216 \div  8 \\times x^{6} \div x^{2} \\times y^{5} \div y^{3}')
             if label[4] == 0:
-                st.info('밑이 같은 거듭제곱의 나눗셈은 지수의 차를이용합니다', icon="ℹ️")
+                st.info('밑이 같은 거듭제곱의 나눗셈은 지수의 차를 이용합니다', icon="ℹ️")
                 st.latex(lst4[3])
                 st.latex(lst4[4])
             
