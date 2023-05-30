@@ -8,10 +8,10 @@ import tensorflow as tf
 import sentencepiece as spm
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 from sample_answer import *
-"""
-여기서부터는 웹에 들어갈 내용
-관련된 함수 참고 : https://docs.streamlit.io/
-"""
+
+###여기서부터는 웹에 들어갈 내용
+###관련된 함수 참고 : https://docs.streamlit.io/
+
 
 st.title("자동 채점 모델 기반 자동 피드백")
 st.write("**팀원** : 수학교육과 김명식, 김재훈, 김지영, 신인섭, 윤예린, 정유진")
