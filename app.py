@@ -179,7 +179,7 @@ if st.session_state["hint1"]:
                 st.info('밑이 같은 거듭제곱의 곱셈은 지수의 합를이용합니다', icon="ℹ️")
                 st.latex(' \square = -12 \\times \\frac{9}{4} \\times x^{3} \\times x \\times y^{2}')            
                 st.latex(' \square = - 27x^{4}y^{2} ') 
-         if k==3:
+        if k==3:
             if label[1] == 0:
                 st.info('단항식의 곱셈 계수끼리, 문자는 문자끼리 계산합니다', icon="ℹ️")
                 st.latex(lst3[1])
