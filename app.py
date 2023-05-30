@@ -119,58 +119,110 @@ if "hint2" not in st.session_state:
 if "hint3" not in st.session_state:
     st.session_state["hint3"] = False
 
-if st.button("1번째 힌트 받기"):
+if st.button("힌트 받기"):
     st.session_state["hint1"] = not st.session_state["hint1"]
-    if k==1:
-        if label[0] == 0:
-            st.info('등식의 성질에 의해 양변에 같은 항을 곱하거나 나눌 수 있습니다. 양변에 같은 항을 곱하거나 나누었나요?', icon="ℹ️")
-            st.latex(lst1[1])
-        if label[0] == 1:
-            st.info('아래 식에서 숫자는 숫자끼리, 문자는 같은 문자끼리 계산해봅시다', icon="ℹ️")
-            st.latex(lst1[2])
-    if k==2:
-        if label[0] == 0:
-            st.info('등식의 성질에 의해 양변에 같은 항을 곱하거나 나눌 수 있습니다. 양변에 같은 항을 곱하거나 나누었나요?', icon="ℹ️")
-        if label[0] == 1:
-            st.info('아래 식에서 숫자는 숫자끼리, 문자는 같은 문자끼리 계산해봅시다', icon="ℹ️")
-            st.latex(lst2[1])
+   
+    if label[0] == 0 and k!=4:
+        st.info('등식의 성질에 의해 양변에 같은 항을 곱하거나 나눌 수 있습니다. 예를 들어', icon="ℹ️")
+        st.latex('\square \\times 2x = 4x')
+        st.latex('\square \\times 2x \\times \\frac{1}{2x}= 4x \\times \\frac{1}{2x}')
+        st.latex('\square = 4x \\times \\frac{1}{2x} = 2')
+    if label[3] == 0:
+        st.info('밑이 같은 거듭제곱의 곱셈은 지수끼리 더합니다. 예를 들어', icon="ℹ️")
+        st.latex('x^{2} \\times x^{3} = x^{2+3}=x^{5}')     
+    if label[1] == 0:
+        st.info('단항식의 곱셈은 숫자끼리, 문자는 같은 문자끼리 곱합니다. 예를 들어', icon="ℹ️")
+        st.latex('2xy \\times 3xy^{2} = 2 \\times 3 \\times x \\times x \\times y^{2} = 6x^{2}y^{3}') 
+    if label[4] == 0:
+        st.info('밑이 같은 거듭제곱의 나눗셈은 지수의 차를 이용합니다. 예를 들어', icon="ℹ️")
+        st.latex('x^{5} \\times \\frac{1}{x^{2}} =x^{5-2}=x^{3}')
+        st.latex('x^{2} \\times \\frac{1}{x^{4}} = \\frac{1}{x^{4-2}}=\\frac{1}{x^{2}}')  
+    if label[2] == 0:
+        st.info('단항식의 나눗셈은 역수를 이용하여 곱셈으로 바꿔 계산합니다. 예를 들어', icon="ℹ️")
+        st.latex('6x^{2}y^{3} \\div 3xy = 6x^{2}y^{3} \\times \\frac{1}{3xy}}')
+        st.latex(' = 6 \\times \\frac{1}{3} \\times x^{2} \\times \\frac{1}{x} \\times y^{3}\\times \\frac{1}{y^{2}} = 2xy^{2}') 
+    
             
             
 if st.session_state["hint1"]:
-    if st.button("2번째 힌트 받기"):
+    if st.button("힌트 더 받기"):
         st.session_state["hint2"] = not st.session_state["hint2"]
         if k==1:
             if label[0] == 0:
                 st.info('등식의 성질에 의해 양변에 같은 항을 곱하거나 나누면', icon="ℹ️")
-                st.latex(lst1[2])
-            if label[0] == 1:
                 st.latex(lst1[1])
                 st.latex(lst1[2])
+            if label[1] == 0 or label[2] == 0:
+                st.info('단항식의 곱셈과 나눗셈은 계수는 계수끼리, 문자는 문자끼리 계산합니다', icon="ℹ️")
+                st.latex(lst1[2])
+                st.latex(lst1[3])
+            if label[3] == 0 or label[4] == 0:
+                st.info('밑이 같은 거듭제곱의 곱셈은 지수의 합, 나눗셈은 지수의 차를이용합니다', icon="ℹ️")
+                st.latex(lst1[3])
+                st.latex(lst1[4])
         if k==2:
+            if label[2] == 0:
+                st.info('단항식의 나눗셈은 계수는 계수끼리, 문자는 문자끼리 계산합니다', icon="ℹ️")
+                st.latex(lst2[1])
+            if label[4] == 0:
+                st.info('밑이 같은 거듭제곱의 나눗셈은 지수의 차를이용합니다', icon="ℹ️")
+                st.latex('\\frac{8}{18} \\times x^{2} \\times \\frac{1}{x^{3}} \\times \\frac{y^{3}}{y^{3}}=\\frac{4}{9x}')
             if label[0] == 0:
                 st.info('등식의 성질에 의해 양변에 같은 항을 곱하거나 나누면', icon="ℹ️")
                 st.latex(lst2[2])
-            if label[0] == 1:
-                st.info('아래 식에서 숫자는 숫자끼리, 문자는 같은 문자끼리 계산해봅시다', icon="ℹ️")
-                st.latex(lst2[2])
-                st.latex(lst2[3])
-if st.session_state["hint1"] and st.session_state["hint2"]:
-    if st.button("3번째 힌트 받기"):
-        st.session_state["hint3"] = not st.session_state["hint3"]
-        if k==1:
-            if label[0] == 0 and label[1] == 1:
-                st.info('아래 식에서 숫자는 숫자끼리, 문자는 같은 문자끼리 계산해봅시다', icon="ℹ️")
-                st.latex(lst1[2])
-            if label[0] == 0 and label[1] == 0:
-                st.info('아래 식처럼 숫자는 숫자끼리, 문자는 같은 문자끼리 계산해봅시다', icon="ℹ️")
-                st.latex(lst1[2])
-                st.latex(lst1[3])
-            if label[0] == 1:
-                st.info('지수법칙에 의해 밑이 같은 항을 곱할 때에는 지수가 덧셈, 나눌 때에는 지수가 뺄셈이 됩니다.', icon="ℹ️")
-                st.latex(lst1[3])
-                st.latex('\square = -27 \\times x^{3+3-2}  \\times y^{2+3-3}')
-if st.session_state["hint3"]:
-    st.write("**Button3!!!**")
+                st.latex('\square = (- 12x^{3}y^{2}) \div \\frac{4}{9x}')
+            if label[1] == 0:
+                st.info('단항식의 곱셈 계수끼리, 문자는 문자끼리 계산합니다', icon="ℹ️")
+                st.latex(' \square = (- 12x^{3}y^{2}) \div \\frac{4}{9x} = (- 12x^{3}y^{2}) \\times \\frac{9x}{4}' )
+                st.latex(' \square = -12 \\times \\frac{9}{4} \\times x^{3} \\times x \\times y^{2}')
+            if label[3] == 0:
+                st.info('밑이 같은 거듭제곱의 곱셈은 지수의 합를이용합니다', icon="ℹ️")
+                st.latex(' \square = -12 \\times \\frac{9}{4} \\times x^{3} \\times x \\times y^{2}')            
+                st.latex(' \square = - 27x^{4}y^{2} ') 
+         if k==3:
+            if label[1] == 0:
+                st.info('단항식의 곱셈 계수끼리, 문자는 문자끼리 계산합니다', icon="ℹ️")
+                st.latex(lst3[1])
+                st.latex(lst3[2])
+            if label[3] == 0:
+                st.info('밑이 같은 거듭제곱의 곱셈은 지수의 합를이용합니다', icon="ℹ️")
+                st.latex(lst3[2])
+                st.latex(lst3[3]) 
+            if label[0] == 0:
+                st.info('등식의 성질에 의해 양변에 같은 항을 곱하거나 나누면', icon="ℹ️")
+                st.latex(lst3[3])
+                st.latex(lst3[4])
+            if label[2] == 0:
+                st.info('단항식의 나눗셈은 계수는 계수끼리, 문자는 문자끼리 계산합니다', icon="ℹ️")
+                st.latex(lst3[4])
+                st.latex(' \square =  -216 \div  8 \\times x^{6} \div x^{2} \\times y^{5} \div y^{3}')
+            if label[4] == 0:
+                st.info('밑이 같은 거듭제곱의 나눗셈은 지수의 차를이용합니다', icon="ℹ️")
+                st.latex(lst3[6])
+         if k==4:
+            st.latex(lst4[0])
+            if label[1] == 0 or label[2] == 0:
+                st.info('단항식의 곱셈과 나눗셈은 계수는 계수끼리, 문자는 문자끼리 계산합니다', icon="ℹ️")
+                st.latex(lst4[1])
+                st.latex('x^{3} \\times x^{3} \div x^{a} = x^{2}' )
+                st.latex('y^{2} \\times y^{3} \div y^{b} = y^{3}')
+            if label[3] == 0 or label[4] == 0:
+                st.info('밑이 같은 거듭제곱의 곱셈은 지수의 합, 나눗셈은 지수의 차를이용합니다', icon="ℹ️")
+                st.latex(lst3[2])
+                st.latex(lst3[3]) 
+            
+            if label[2] == 0:
+                st.info('단항식의 나눗셈은 계수는 계수끼리, 문자는 문자끼리 계산합니다', icon="ℹ️")
+                st.latex(lst3[4])
+                st.latex(' \square =  -216 \div  8 \\times x^{6} \div x^{2} \\times y^{5} \div y^{3}')
+            if label[4] == 0:
+                st.info('밑이 같은 거듭제곱의 나눗셈은 지수의 차를이용합니다', icon="ℹ️")
+                st.latex(lst4[3])
+                st.latex(lst4[4])
+            
+
+#if st.session_state["hint3"]:
+    #st.write("**Button3!!!**")
     
 if st.button('풀이보기'):
     if k==1:
