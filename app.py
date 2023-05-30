@@ -199,7 +199,7 @@ if st.session_state["hint1"]:
             if label[4] == 0:
                 st.info('밑이 같은 거듭제곱의 나눗셈은 지수의 차를이용합니다', icon="ℹ️")
                 st.latex(lst3[6])
-         if k==4:
+        if k==4:
             st.latex(lst4[0])
             if label[1] == 0 or label[2] == 0:
                 st.info('단항식의 곱셈과 나눗셈은 계수는 계수끼리, 문자는 문자끼리 계산합니다', icon="ℹ️")
