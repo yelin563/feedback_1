@@ -113,14 +113,14 @@ if st.button('피드백 받기'):
 #####힌트받기
       
 if "hint1" not in st.session_state:
-    st.session_state["hint1"] = False
+    st.session_state["hint1"] = 0
 if "hint2" not in st.session_state:
-    st.session_state["hint2"] = False
+    st.session_state["hint2"] = 0
 if "hint3" not in st.session_state:
-    st.session_state["hint3"] = False
+    st.session_state["hint3"] = 0
 
 if st.button("힌트 받기"):
-    st.session_state["hint1"] = not st.session_state["hint1"]
+    st.session_state["hint1"] = st.session_state["hint1"]+1
     
     if label[0] == 0 and k!=4:
         st.info('등식의 성질에 의해 양변에 같은 항을 곱하거나 나눌 수 있습니다. 예를 들어', icon="ℹ️")
@@ -145,9 +145,9 @@ if st.button("힌트 받기"):
         st.info('식의 계산을 잘 이해하고 있어 받을 힌트가 없네요. 실수한 것이 있는지 한번 검토해봅시다. ', icon="ℹ️")
             
             
-if st.session_state["hint1"]:
+if st.session_state["hint1"]>0:
     if st.button("힌트 더 받기"):
-        st.session_state["hint2"] = not st.session_state["hint2"]
+        #st.session_state["hint2"] = st.session_state["hint2"] +1
         if k==1:
             if label[0] == 0:
                 st.info('등식의 성질에 의해 양변에 같은 항을 곱하거나 나누면', icon="ℹ️")
