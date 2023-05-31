@@ -173,7 +173,7 @@ if st.session_state["hint1"]>0:
                 st.latex(lst2[2])
                 st.latex('\square = (- 12x^{3}y^{2}) \div \\frac{4}{9x}')
             if label[1] == 0:
-                st.info('단항식의 곱셈 계수끼리, 문자는 문자끼리 계산합니다', icon="ℹ️")
+                st.info('단항식의 곱은 계수는 계수끼리, 문자는 문자끼리 계산합니다', icon="ℹ️")
                 st.latex(' \square = (- 12x^{3}y^{2}) \div \\frac{4}{9x} = (- 12x^{3}y^{2}) \\times \\frac{9x}{4}' )
                 st.latex(' \square = -12 \\times \\frac{9}{4} \\times x^{3} \\times x \\times y^{2}')
             if label[3] == 0:
@@ -182,7 +182,7 @@ if st.session_state["hint1"]>0:
                 st.latex(' \square = - 27x^{4}y^{2} ') 
         if k==3:
             if label[1] == 0:
-                st.info('단항식의 곱셈 계수끼리, 문자는 문자끼리 계산합니다', icon="ℹ️")
+                st.info('단항식의 곱셈은 계수는 계수끼리, 문자는 문자끼리 계산합니다', icon="ℹ️")
                 st.latex(lst3[1])
                 st.latex(lst3[2])
             if label[3] == 0:
