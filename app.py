@@ -91,7 +91,7 @@ if l < max_len :
 else : pad_mc = enc_mc[l-max_len:]
 pad_ten_mc = torch.tensor(pad_mc)
 pad_ten_mc = pad_ten_mc.reshape(1,max_len)
-y_mc = model(pad_ten_mc)
+y_mc = model_mc(pad_ten_mc)
 label_mc = y_mc.squeeze().detach().cpu().numpy().round()
 print("label_mc :", label_mc)
 
