@@ -231,12 +231,12 @@ if st.session_state["hint1"]>0:
                 st.latex('y^{2} \\times y^{3} \div y^{b} = y^{3}')
             if label[3] == 0 or label[4] == 0:
                 st.info('밑이 같은 거듭제곱의 곱셈은 지수의 합, 나눗셈은 지수의 차를 이용합니다', icon="ℹ️")
-                st.latex(lst3[2])
-                st.latex(lst3[3]) 
+                st.latex(lst4[2])
+                st.latex(lst4[3]) 
             
             if label[2] == 0:
                 st.info('단항식의 나눗셈은 계수는 계수끼리, 문자는 문자끼리 계산합니다', icon="ℹ️")
-                st.latex(lst3[4])
+                st.latex(lst4[4])
                 st.latex(' \square =  -216 \div  8 \\times x^{6} \div x^{2} \\times y^{5} \div y^{3}')
             if label[4] == 0:
                 st.info('밑이 같은 거듭제곱의 나눗셈은 지수의 차를 이용합니다', icon="ℹ️")
