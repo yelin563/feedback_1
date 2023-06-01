@@ -108,6 +108,7 @@ if k!=4:
 g_str = ' , '.join(g)
 b_str = ' , '.join(b)
 
+#####피드백받기
 
 if st.button('피드백 받기'):
     #output차원에 맞추어 피드백 넣기
@@ -129,20 +130,18 @@ if st.button('피드백 받기'):
     if corr[0].round() == 0 and label_mc[2]==1:
         st.write(f'혹시 부호를 잘못 구하진 않았나요?', icon="ℹ️")
     if corr[0].round() == 0 and label_mc[3]==1:
-        st.write(f'혹시 식을 잘못 보고 쓰지 않았나?', icon="ℹ️")
+        st.write(f'혹시 식을 잘못 보고 쓰지 않았나요?', icon="ℹ️")
     if corr[0].round() == 0 and label_mc[4]==1:
         st.write(f'계산은 모두 맞게 했지만 등식의 성질을 잘못 이용하진 않았나요?', icon="ℹ️")
+        
+        
 #####힌트받기
       
-if "hint1" not in st.session_state:
-    st.session_state["hint1"] = 0
-if "hint2" not in st.session_state:
-    st.session_state["hint2"] = 0
-if "hint3" not in st.session_state:
-    st.session_state["hint3"] = 0
+if "hint" not in st.session_state:
+    st.session_state["hint"] = 0
 
 if st.button("힌트 받기"):
-    st.session_state["hint1"] = st.session_state["hint1"]+1
+    st.session_state["hint"] = st.session_state["hint"]+1
     
     if label[0] == 0 and k!=4:
         st.info('등식의 성질에 의해 양변에 같은 항을 곱하거나 나눌 수 있습니다. 예를 들어', icon="ℹ️")
@@ -167,9 +166,9 @@ if st.button("힌트 받기"):
         st.info('식의 계산을 잘 이해하고 있어 받을 힌트가 없네요. 실수한 것이 있는지 한번 검토해봅시다. ', icon="ℹ️")
             
             
-if st.session_state["hint1"]>0:
+if st.session_state["hint"]>0:
     if st.button("힌트 더 받기"):
-        #st.session_state["hint2"] = st.session_state["hint2"] +1
+        
         if k==1:
             if label[0] == 0:
                 st.info('등식의 성질에 의해 양변에 같은 항을 곱하거나 나누면', icon="ℹ️")
@@ -233,13 +232,9 @@ if st.session_state["hint1"]>0:
                 st.info('밑이 같은 거듭제곱의 곱셈은 지수의 합, 나눗셈은 지수의 차를 이용합니다', icon="ℹ️")
                 st.latex(lst4[2])
                 st.latex(lst4[3]) 
-            
            
-            
+           
 
-#if st.session_state["hint3"]:
-    #st.write("**Button3!!!**")
-    
 if st.button('풀이보기'):
     if k==1:
         for i in range(len(lst1)):
