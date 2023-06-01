@@ -59,7 +59,7 @@ pad_ten = torch.tensor(pad)
 pad_ten = pad_ten.reshape(1,max_len)
 y = model(pad_ten)
 label = y.squeeze().detach().cpu().numpy().round()
-print(label)
+print("label_kc :",label)
 
 ######유사한 모범답안
 
@@ -79,6 +79,21 @@ sequences2 = [sp2.encode_as_ids(response)]
 X2 = pad_sequences(sequences2, maxlen=150)
 corr = model2.predict(X2 .reshape(1,150))
 
+######오류유형
+model_name_mc="2-6_mc_att_sp_100"
+model_mc = ATTModel(5, c) 
+model_mc.load_state_dict(torch.load("./save/"+model_name_mc+".pt"))
+tokenizer_mc = AutoTokenizer.from_pretrained("./save/"+ model_name_mc)
+enc_mc = tokenizer_mc(response)["input_ids"] #sp tokenizer
+l = len(enc_mc)
+if l < max_len :
+    pad_mc = (max_len - l) * [0] + enc_mc
+else : pad_mc = enc_mc[l-max_len:]
+pad_ten_mc = torch.tensor(pad_mc)
+pad_ten_mc = pad_ten_mc.reshape(1,max_len)
+y_mc = model(pad_ten_mc)
+label_mc = y_mc.squeeze().detach().cpu().numpy().round()
+print("label_mc :", label_mc)
 
 ######인지요소
 
@@ -109,7 +124,14 @@ if st.button('피드백 받기'):
         st.info(f'다시 한 번 풀어볼까요? 계산 과정과 {b_str} 과정을 검토해봅시다.', icon="ℹ️")
     elif corr[0].round() == 0 and len(b)==0 and len(g)>0:
         st.info(f'다시 한 번 풀어볼까요? {g_str} 을 이해하고 있네요. 하지만 실수한 것이 있는지 한번 검토해봅시다.', icon="ℹ️")
-    
+    if corr[0].round() == 0 and label_mc[1]:
+        st.info(f'혹시 구한 것이 $\square$의 역수가 아닌가요?', icon="ℹ️")
+    if corr[0].round() == 0 and label_mc[2]:
+        st.info(f'혹시 부호를 잘못 구하진 않았나요?', icon="ℹ️")
+    if corr[0].round() == 0 and label_mc[3]:
+        st.info(f'혹시 식을 잘못 보고 쓰지 않았나?', icon="ℹ️")
+    if corr[0].round() == 0 and label_mc[4]:
+        st.info(f'계산은 모두 맞게 했지만 등식의 성질을 잘못 이용하진 않았나요?', icon="ℹ️")
 #####힌트받기
       
 if "hint1" not in st.session_state:
