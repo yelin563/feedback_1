@@ -44,7 +44,35 @@ st.image('images/3_3_ex_12.png', caption = "3_3_예시")
 st.markdown(markdown_table4, unsafe_allow_html=True)
 
 
+image_path = 'images/1_8_ex_2.png'
+image = open(image_path, 'rb').read()
+image_width = st.image(image, caption="1_8_예시").width
 
+# 스타일 설정
+st.markdown(
+    f"""
+    <style>
+        .image-container .image-wrapper {{
+            width: {image_width}px;
+        }}
+        .image-container .image-wrapper img {{
+            width: 100%;
+        }}
+        .image-container .markdown-text-container {{
+            width: {image_width}px;
+        }}
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+# 이미지와 테이블 표시
+st.markdown(
+    f"<div class='image-container'><div class='image-wrapper'><img src='data:image/png;base64,{image}'></div>" +
+    "<div class='markdown-text-container'>" +
+    f"{markdown_table1}</div></div>",
+    unsafe_allow_html=True
+)
 
 
   
