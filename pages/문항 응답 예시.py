@@ -22,19 +22,19 @@ markdown_table3 = """
 """
 markdown_table4 = """
 | **등식의 성질** | **(다항식)x(단항식)** | **단항식의 곱셈** | **(다항식)÷(단항식)** |**단항식의 나눗셈** |**정오답** |
-|  :---: | :---: | :---: | :---: | :---: | :---: | -
+|  :---: | :---: | :---: | :---: | :---: | :---: | 
 | 0 | 1 | 1 | 0 | 0 | 0 |
 """
 
 
 st.header("1-8 예시")
-st.image('images/1_8_ex_2.png',  caption = "1_8_예시",width=1000)
+st.image('images/1_8_ex_2.png',  caption = "1_8_예시",width=800)
 
 st.markdown(markdown_table1, unsafe_allow_html=True)
 st.divider()
 st.header("2-6 예시")
 st.image('images/2_6_ex_217.png',caption = "2_6_예시")
-st.markdown(markdown_table2, unsafe_allow_html=True)
+st.markdown(markdown_table2, unsafe_allow_html=True,width=800)
 st.divider()
 st.header("2-7 예시")
 st.image('images/2_7_ex_236.png', caption = "2_7_예시")
