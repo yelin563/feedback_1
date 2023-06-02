@@ -28,7 +28,8 @@ markdown_table4 = """
 
 
 st.header("1-8 예시")
-st.image('images/1_8_ex_2.png',  caption = "1_8_예시", width=100)
+st.image('images/1_8_ex_2.png',  caption = "1_8_예시",width=1000)
+
 st.markdown(markdown_table1, unsafe_allow_html=True)
 st.divider()
 st.header("2-6 예시")
