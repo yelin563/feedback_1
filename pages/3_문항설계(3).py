@@ -80,7 +80,7 @@ c_all = cfg(vs=170, emb=100, hidden=32, nh=4, device="cpu")
 # model = LSTMModel(output_d, c) #LSTMModel 쓰는경우
 model_all = ATTModel(output_d_all, c_all) #ATTModel 쓰는경우
 
-model_all.load_state_dict(torch.load("./save/"+model_name+".pt"))
+model_all.load_state_dict(torch.load("./save/"+model_1_1_all+".pt"))
 
 ######자신에게 맞는 모델로 부르기
 tokenizer_1_1_all = AutoTokenizer.from_pretrained("./save/"+ model_1_1_all) #sp tokenizer 쓰는 경우
