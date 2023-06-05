@@ -64,8 +64,10 @@ pad_ten = pad_ten.reshape(1,max_len)
 y = model(pad_ten)
 label = y.squeeze().detach().cpu().numpy().round()
 print("label_kc :",label)
-
-
+if label[1]==1:
+    st.write('정답입니다!')
+else:
+    st.write('오답입니다ㅜㅜ')
 ######자신의 모델에 맞는 변수 설정해주기
 
 model_1_1_all = "all_kc_att_sp_170" #모델 이름 넣어주기 확장자는 넣지말기!
@@ -99,3 +101,7 @@ pad_ten = pad_ten.reshape(1,max_len)
 y = model_all(pad_ten)
 label_all = y.squeeze().detach().cpu().numpy().round()
 print("label_all :",label)
+if label_all[1]==1:
+    st.write('정답입니다!')
+else:
+    st.write('오답입니다ㅜㅜ')
