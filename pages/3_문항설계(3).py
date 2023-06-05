@@ -101,7 +101,7 @@ pad_ten = pad_ten.reshape(1,max_len)
 y = model_all(pad_ten)
 label_all = y.squeeze().detach().cpu().numpy().round()
 print("label_all :",label)
-if label_all[1]==1:
+if label_all[0]==1:
     st.write('정답입니다!')
 else:
     st.write('오답입니다ㅜㅜ')
