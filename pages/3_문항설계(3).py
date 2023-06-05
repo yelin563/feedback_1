@@ -98,8 +98,8 @@ if l < max_len :
 else : pad_all = enc_all[l-max_len:]
 pad_ten = torch.tensor(pad_all)
 pad_ten = pad_ten.reshape(1,max_len)
-y = model_all(pad_ten)
-label_all = y.squeeze().detach().cpu().numpy().round()
+y_all = model_all(pad_ten)
+label_all = y_all.squeeze().detach().cpu().numpy().round()
 print("label_all :",label_all)
 if len(label_all)>0:
     st.write('정답입니다!')
